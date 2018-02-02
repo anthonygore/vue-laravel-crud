@@ -23,42 +23,50 @@
 </template>
 
 <script>
-  function Crud(id, color) {
+  function Crud({ id, color, name}) {
     this.id = id;
     this.color = color;
+    this.name = name;
   }
-
-  let index = 0;
-
-  let cruds = [
-    new Crud(index, Math.random() < 0.5 ? 'red' : 'green'),
-    new Crud(++index, Math.random() < 0.5 ? 'red' : 'green'),
-  ];
 
   import CrudComponent from './Crud.vue';
 
   export default {
     data() {
       return {
-        cruds
+        cruds: []
       }
     },
     methods: {
       create() {
-        cruds.push(new Crud(++index, Math.random() < 0.5 ? 'red' : 'green'));
+        window.axios.get('/api/cruds/create').then(({ data }) => {
+          this.cruds.push(new Crud(data));
+        });
       },
       read() {
-
+        window.axios.get('/api/cruds').then(({ data }) => {
+          data.forEach(crud => {
+            this.cruds.push(new Crud(crud));
+          });
+        });
       },
       update(id, color) {
-        console.log(id, color);
+        window.axios.put(`/api/cruds/${id}`, { id, color }).then(() => {
+          this.cruds.find(crud => crud.id === id).color = color;
+        });
       },
       del(id) {
-        console.log(id);
+        window.axios.delete(`/api/cruds/${id}`).then(() => {
+          let index = this.cruds.findIndex(crud => crud.id === id);
+          this.cruds.splice(index, 1);
+        });
       }
     },
     components: {
       CrudComponent
+    },
+    created() {
+      this.read();
     }
   }
 </script>

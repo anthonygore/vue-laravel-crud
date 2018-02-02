@@ -4,7 +4,7 @@
             <img :src="image"/>
         </div>
         <div class="col-2">
-            <h3>Name: {{ rand() | properCase }}</h3>
+            <h3>Name: {{ name | properCase }}</h3>
             <select @change="update">
                 <option
                         v-for="col in [ 'red', 'green' ]"
@@ -31,18 +31,9 @@
       },
       del() {
         this.$emit('delete', this.id);
-      },
-      rand() {
-        let text = "";
-        let possible = "abcdefghijklmnopqrstuvwxyz";
-
-        for( let i=0; i < Math.random() * 10 ; i++ )
-          text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-        return text;
       }
     },
-    props: ['id', 'color'],
+    props: ['id', 'color', 'name'],
     filters: {
       properCase(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
