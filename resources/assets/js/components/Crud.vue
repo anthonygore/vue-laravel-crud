@@ -44,9 +44,9 @@
 <style>
     .crud {
         display: flex;
-        padding: 1em;
+        margin: 1em 1em 1em 0;
         border: 1px solid #d1d1d1;
-        margin: 1em;
+        padding: 1em;
         max-width: 350px;
     }
     .crud img {
