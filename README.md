@@ -4,6 +4,8 @@ Vue 2.5 + Laravel 5.5 + Axios CRUD example app
 
 > Inspiration from [https://github.com/herusdianto/laravel-vue-crud](https://github.com/herusdianto/laravel-vue-crud)
 
+![](./demo.gif)
+
 ### Installation
 
 1. Clone repo

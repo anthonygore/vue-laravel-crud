@@ -48,7 +48,9 @@
         border: 1px solid #d1d1d1;
         padding: 1em;
         max-width: 350px;
+        background-color: white;
     }
+
     .crud img {
         height: 70px;
     }
