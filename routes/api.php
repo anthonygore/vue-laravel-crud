@@ -18,5 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('/cruds', 'CrudsController', [
-    'except' => ['edit', 'show']
+    'except' => ['edit', 'show', 'store']
 ]);

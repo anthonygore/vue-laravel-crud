@@ -11,7 +11,7 @@ class CrudsController extends Controller
 {
     public function index()
     {
-        return Crud::all()->jsonSerialize();
+        return response(Crud::all()->jsonSerialize(), Response::HTTP_OK);
     }
 
     public function create(Generator $faker)
@@ -30,13 +30,13 @@ class CrudsController extends Controller
         $crud->color = $request->color;
         $crud->save();
 
-        return response(null, Response::HTTP_CREATED);
+        return response(null, Response::HTTP_OK);
     }
 
     public function destroy($id)
     {
         Crud::destroy($id);
 
-        return response(null, Response::HTTP_CREATED);
+        return response(null, Response::HTTP_OK);
     }
 }

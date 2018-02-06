@@ -34,39 +34,39 @@
     },
     methods: {
       create() {
-        this.working = true;
+        this.mute = true;
         window.axios.get('/api/cruds/create').then(({ data }) => {
           this.cruds.push(new Crud(data));
-          this.working = false;
+          this.mute = false;
         });
       },
       read() {
-        this.working = true;
+        this.mute = true;
         window.axios.get('/api/cruds').then(({ data }) => {
           data.forEach(crud => {
             this.cruds.push(new Crud(crud));
           });
-          this.working = false;
+          this.mute = false;
         });
       },
       update(id, color) {
-        this.working = true;
-        window.axios.put(`/api/cruds/${id}`, { id, color }).then(() => {
+        this.mute = true;
+        window.axios.put(`/api/cruds/${id}`, { color }).then(() => {
           this.cruds.find(crud => crud.id === id).color = color;
-          this.working = false;
+          this.mute = false;
         });
       },
       del(id) {
-        this.working = true;
+        this.mute = true;
         window.axios.delete(`/api/cruds/${id}`).then(() => {
           let index = this.cruds.findIndex(crud => crud.id === id);
           this.cruds.splice(index, 1);
-          this.working = false;
+          this.mute = false;
         });
       }
     },
     watch: {
-      working(val) {
+      mute(val) {
         document.getElementById('mute').className = val ? "on" : "";
       }
     },
