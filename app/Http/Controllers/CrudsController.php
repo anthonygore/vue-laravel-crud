@@ -18,7 +18,7 @@ class CrudsController extends Controller
     {
         $crud = new Crud();
         $crud->name = $faker->lexify('????????');
-        $crud->color = $faker->boolean ? 'red' : 'green';
+        $crud->color = $faker->randomElement(['red' ,'green', 'hackoctober']);
         $crud->save();
 
         return response($crud->jsonSerialize(), Response::HTTP_CREATED);

@@ -14,6 +14,6 @@
 $factory->define(App\Crud::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->lexify('????????'),
-        'color' =>$faker->boolean ? 'red' : 'green'
+        'color' =>$faker->randomElement(['red', 'green', 'hackoctober']),
     ];
 });

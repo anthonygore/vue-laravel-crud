@@ -7,7 +7,7 @@
             <h3>Name: {{ name | properCase }}</h3>
             <select @change="update">
                 <option
-                        v-for="col in [ 'red', 'green' ]"
+                        v-for="col in [ 'red', 'green', 'hackoctober' ]"
                         :value="col"
                         :key="col"
                         :selected="col === color ? 'selected' : ''"
