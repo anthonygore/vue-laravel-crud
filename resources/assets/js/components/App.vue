@@ -29,7 +29,7 @@
     data() {
       return {
         cruds: [],
-        working: false
+        mute: false
       }
     },
     methods: {
