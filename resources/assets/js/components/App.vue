@@ -33,36 +33,32 @@
       }
     },
     methods: {
-      create() {
+      async create() {
         this.mute = true;
-        window.axios.get('/api/cruds/create').then(({ data }) => {
-          this.cruds.push(new Crud(data));
-          this.mute = false;
-        });
+        const { data } = await window.axios.get('/api/cruds/create');
+        this.cruds.push(new Crud(data));
+        this.mute = false;
       },
-      read() {
+      async read() {
         this.mute = true;
-        window.axios.get('/api/cruds').then(({ data }) => {
-          data.forEach(crud => {
-            this.cruds.push(new Crud(crud));
-          });
-          this.mute = false;
+        const { data } = await window.axios.get('/api/cruds');
+        data.forEach(crud => {
+          this.cruds.push(new Crud(crud));
         });
+        this.mute = false;
       },
-      update(id, color) {
+      async update(id, color) {
         this.mute = true;
-        window.axios.put(`/api/cruds/${id}`, { color }).then(() => {
-          this.cruds.find(crud => crud.id === id).color = color;
-          this.mute = false;
-        });
+        await window.axios.put(`/api/cruds/${id}`, { color });
+        this.cruds.find(crud => crud.id === id).color = color;
+        this.mute = false;
       },
-      del(id) {
+      async del(id) {
         this.mute = true;
-        window.axios.delete(`/api/cruds/${id}`).then(() => {
-          let index = this.cruds.findIndex(crud => crud.id === id);
-          this.cruds.splice(index, 1);
-          this.mute = false;
-        });
+        await window.axios.delete(`/api/cruds/${id}`);
+        let index = this.cruds.findIndex(crud => crud.id === id);
+        this.cruds.splice(index, 1);
+        this.mute = false;
       }
     },
     watch: {
