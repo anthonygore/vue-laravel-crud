@@ -1,3 +1,21 @@
+
+Note: this is from 
+https://github.com/anthonygore/vue-laravel-crud
+and https://medium.com/js-dojo/the-ultimate-vue-js-laravel-crud-tutorial-3640baf7eda0
+
+------------------------------
+To get the code running:
+Terminal 1: (optional)
+npm run watch
+
+Terminal 2:
+php artisan serve
+http://127.0.0.1:8000
+
+------------------------------
+INSTALLATION:
+
+
 # vue-laravel-crud
 
 Vue 2.5 + Laravel 5.8.* + Axios CRUD example app
