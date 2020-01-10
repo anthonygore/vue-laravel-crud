@@ -11,7 +11,7 @@
                 @delete="del"
         ></crud-component>
         <div>
-            <button @click="create()">Add</button>
+            <button @click="create">Add</button>
         </div>
     </div>
 </template>
@@ -23,7 +23,7 @@
     this.name = name;
   }
 
-  import CrudComponent from './Crud.vue';
+  import CrudComponent from './components/Crud.vue';
 
   export default {
     data() {
@@ -42,9 +42,7 @@
       async read() {
         this.mute = true;
         const { data } = await window.axios.get('/api/cruds');
-        data.forEach(crud => {
-          this.cruds.push(new Crud(crud));
-        });
+        data.forEach(crud => this.cruds.push(new Crud(crud)));
         this.mute = false;
       },
       async update(id, color) {

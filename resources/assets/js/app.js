@@ -18,7 +18,7 @@ Vue.config.performance = true;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import App from './components/App.vue';
+import App from './App.vue';
 
 const app = new Vue({
   el: '#app',
